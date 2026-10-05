@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>USB Sentinel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><b>U</b><div><strong>USB Sentinel</strong><small>OS Security Monitor</small></div></div>
+  <nav>
+    <button class="nav active" data-page="overview">◉ Overview</button>
+    <button class="nav" data-page="devices">▣ USB Devices</button>
+    <button class="nav" data-page="activity">≡ Activity Log</button>
+    <button class="nav" data-page="alerts">! Alerts</button>
+  </nav>
+  <div class="online"><i></i><div><strong>Protection active</strong><small>macOS monitor online</small></div></div>
+</aside>
+
+<main>
+<header>
+  <div><small>SECURITY CENTER</small><h1>USB Activity Monitor</h1></div>
+  <div class="actions"><span id="updated">Connecting…</span>
+    <button id="scan">Scan now</button><button id="demo">Detection test</button>
+  </div>
+</header>
+
+<section id="overview" class="page active">
+  <div class="hero"><div><small>REAL-TIME ENDPOINT VISIBILITY</small><h2>Monitor. Detect. Respond.</h2>
+  <p>Watches mounted external volumes, records file activity, and applies lightweight risk rules to suspicious transfer patterns.</p></div>
+  <div class="protection"><i></i><div><strong>Monitoring active</strong><small>/Volumes</small></div></div></div>
+
+  <div class="stats">
+    <article><small>CONNECTED DEVICES</small><b id="devicesN">0</b><span>currently mounted</span></article>
+    <article><small>EVENTS CAPTURED</small><b id="eventsN">0</b><span>recent events</span></article>
+    <article><small>ACTIVE ALERTS</small><b id="alertsN">0</b><span>medium + high risk</span></article>
+    <article><small>HIGH RISK</small><b id="highN">0</b><span>requires attention</span></article>
+  </div>
+
+  <div class="grid">
+    <article class="panel"><div class="panelHead"><div><small>DEVICES</small><h3>Connected USB volumes</h3></div><em>LIVE</em></div><div id="deviceList"></div></article>
+    <article class="panel"><div class="panelHead"><div><small>THREAT MODEL</small><h3>Detection rules</h3></div></div>
+      <div class="rules">
+        <div><b>01</b><p><strong>Large file</strong><small>≥ 100 MB</small></p><em>MED</em></div>
+        <div><b>02</b><p><strong>Bulk files</strong><small>≥ 20 files / 30 sec</small></p><em>HIGH</em></div>
+        <div><b>03</b><p><strong>Bulk volume</strong><small>≥ 500 MB / 30 sec</small></p><em>HIGH</em></div>
+      </div>
+    </article>
+  </div>
+
+  <article class="panel"><div class="panelHead"><div><small>RECENT</small><h3>Security activity</h3></div><button class="link" data-go="activity">View all →</button></div><div id="recent"></div></article>
+</section>
+
+<section id="devices" class="page"><div class="title"><small>DEVICE MANAGEMENT</small><h2>USB Devices</h2><p>Volumes visible to macOS under <code>/Volumes</code>.</p></div><div id="allDevices" class="cards"></div></section>
+<section id="activity" class="page"><div class="title"><small>AUDIT TRAIL</small><h2>Activity Log</h2><p>Filesystem events captured by the OS monitoring layer.</p></div><article class="panel"><div id="allEvents"></div></article></section>
+<section id="alerts" class="page"><div class="title"><small>THREAT RESPONSE</small><h2>Alerts</h2><p>Events classified as medium or high risk.</p></div><article class="panel"><div id="allAlerts"></div></article></section>
+</main>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
